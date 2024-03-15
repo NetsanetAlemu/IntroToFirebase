@@ -18,16 +18,16 @@ import {
   createUserWithEmailAndPassword,
   signOut,
   signInWithEmailAndPassword,
-  onAuthStateChanged
+  onAuthStateChanged,
 } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyBQI3vEb-s-eKGF28TUkvhJZAH6-9GQik0",
-  authDomain: "fir-9-dojo-f65ee.firebaseapp.com",
-  projectId: "fir-9-dojo-f65ee",
-  storageBucket: "fir-9-dojo-f65ee.appspot.com",
-  messagingSenderId: "346788300132",
-  appId: "1:346788300132:web:2cc10d5dcbd13d00d0a671",
+  apiKey: process.env.APP_API_KEY,
+  authDomain: process.env.APP_AUTH_DOMAIN,
+  projectId: process.env.APP_PROJECT_ID,
+  storageBucket: process.env.APP_STORAGE_BUCKET,
+  messagingSenderId: process.env.APP_MESSAGING_SENDER_ID,
+  appId: process.env.APP_APP_ID,
 };
 
 // initialize firebase app
@@ -145,15 +145,14 @@ loginForm.addEventListener("submit", (e) => {
 
 // subscribing to auth changes
 const unsubAuth = onAuthStateChanged(auth, (user) => {
-    console.log('user status changed', user);
-    
-})
+  console.log("user status changed", user);
+});
 
 // unsubscribing from subscribptions
-const unsubscribing = document.querySelector('.unsubscribe');
-unsubscribing.addEventListener('click', ()=> {
-     console.log('unsubscribing');
-     unsubCol()
-     unsubDoc()
-     unsubAuth()
-})
+const unsubscribing = document.querySelector(".unsubscribe");
+unsubscribing.addEventListener("click", () => {
+  console.log("unsubscribing");
+  unsubCol();
+  unsubDoc();
+  unsubAuth();
+});
